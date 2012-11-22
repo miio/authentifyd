@@ -36,6 +36,8 @@ class CreateAuthentifydUsers < ActiveRecord::Migration
       # Token authenticatable
       t.string :authentication_token
 
+      # custom
+      t.boolean :admin, :default => false
 
       t.timestamps
     end
