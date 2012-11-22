@@ -1,0 +1,14 @@
+= Authentifyd
+
+Devise + Omniauth Authentication encapsulated in an Engine. Uses Devise. Was inspired by perens-instant-user
+
+== Installation
+
+* gem 'authentifyd'
+* rake authentifyd:install:migrations
+* rake db:migrate
+* in config/routes.rb add:
+    mount Authentifyd::Engine => '/'
+* Configure Devise: copy paste http://raw.github.com/plataformatec/devise/master/lib/generators/templates/devise.rb in config/initializers/devise.rb. Edit it.
+  * NB: set "config.pepper".
+      ex: require 'securerandom' -> SecureRandom.hex(64)
