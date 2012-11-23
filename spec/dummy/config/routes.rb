@@ -1,4 +1,4 @@
 Rails.application.routes.draw do
 
-  mount Authentifyd::Engine => "/authentifyd"
+  mount Authentifyd::Engine => "/"
 end
