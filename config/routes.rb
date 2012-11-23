@@ -10,7 +10,7 @@ Authentifyd::Engine.routes.draw do
   match '/auth/failure', :to => 'authentications#failure'
 
   # Account linking
-  match 'authentifyd_authentications/:user_id/link' => 'authentications#link', :as => :link_accounts
-  match 'authentifyd_authentications/:user_id/add' => 'authentications#add', :as => :add_account
+  match 'authentications/:user_id/link' => 'authentications#link', :as => :link_accounts
+  match 'authentications/:user_id/add' => 'authentications#add', :as => :add_account
   root :to => 'home#index'
 end

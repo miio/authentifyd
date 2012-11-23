@@ -1,2 +1,2 @@
-class Authentifyd::SessionsController < Devise::RegistrationsController
+class Authentifyd::SessionsController < Devise::SessionsController
 end

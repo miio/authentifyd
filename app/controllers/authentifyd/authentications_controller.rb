@@ -40,13 +40,13 @@ class Authentifyd::AuthenticationsController < Authentifyd::ApplicationControlle
     else
       user = Authentifyd::User.new
       user.apply_omniauth(omniauth)
-      user.email = omniauth['extra'] && omniauth['extra']['user_hash'] && omniauth['extra']['user_hash']['email']
+      user.email = omniauth["info"] && omniauth["info"]["email"]
       if user.save
         flash[:notice] = "Successfully registered"
         sign_in_and_redirect(:user, user)
       else
         session[:omniauth] = omniauth.except('extra')
-        session[:omniauth_email] = omniauth['extra'] && omniauth['extra']['user_hash'] && omniauth['extra']['user_hash']['email']
+        session[:omniauth_email] = omniauth["info"] && omniauth["info"]["email"]
 
         # Check if email already taken. If so, ask user to link_accounts
         if user.errors[:email][0] =~ /has already been taken/ # omniauth? TBD
