@@ -2,7 +2,7 @@ Authentifyd::Engine.routes.draw do
   devise_for :users, {
     class_name:		'Authentifyd::User',
     module: :devise,
-    controllers: {  registrations: 'registrations' }
+    controllers: {  registrations: 'authentifyd_registrations' }
   }
   # omniauth client stuff
   match '/auth/:provider/callback', :to => 'authentications#create'

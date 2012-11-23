@@ -27,9 +27,4 @@ class Authentifyd::RegistrationsController < Devise::RegistrationsController
       @user.valid?
     end
   end
-
-  # FIXME: should be put in sso_provider
-  def after_update_path_for(scope)
-    session[:referrer] ? session[:referrer] : root_path
-  end
 end

@@ -15,9 +15,12 @@ Gem::Specification.new do |s|
 
   s.add_dependency "rails", "~> 3.2.8"
   # s.add_dependency "jquery-rails"
-  s.add_dependency 'devise', '>= 2.0.0rc'
+
+  # s.add_dependency 'haml'
+
+  s.add_dependency 'devise', '2.1.2'
+  s.add_dependency 'devise-encryptable'
   s.add_dependency 'omniauth'
-  s.add_dependency 'haml'
 
   s.add_development_dependency "mysql2"
   s.add_development_dependency "rspec-rails"
