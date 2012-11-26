@@ -20,8 +20,7 @@ module Authentifyd
   end
 
   def self.embeddable_callback_path
-    Authentifyd.path_prefix ?  "#{self.path_prefix}/" : '' +
-    "#{Authentifyd.path}/auth/twitter/callback"
+    (Authentifyd.path_prefix ?  "#{Authentifyd.path_prefix}/" : '') + Authentifyd.path
   end
 
 end
