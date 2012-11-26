@@ -9,6 +9,8 @@ Devise + Omniauth Authentication encapsulated in an Engine. Uses Devise. Parts t
 * rake db:migrate
 * in config/routes.rb add:
     mount Authentifyd::Engine => "/#{your root for authentifyd}"
+    * NB: don't mount Engine on root "/". This could be a feature added in the future but for the moment this possibility is not implemented.
+    
 * Configure Devise: copy paste http://raw.github.com/plataformatec/devise/master/lib/generators/templates/devise.rb in config/initializers/devise.rb. Edit it.
   * NB: set "config.pepper".
       ex: require 'securerandom' -> SecureRandom.hex(64)

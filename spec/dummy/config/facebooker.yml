@@ -1,8 +1,0 @@
-staging: &staging
-  app_id: 289568201114249
-  app_secret: 69e133f7969a7e3d9f65871cf213038c
-development: &development
-  app_id: 172691466182899
-  app_secret: 5f0f30b05b42ca41b40320fe75221574
-test:
-  <<: *development
