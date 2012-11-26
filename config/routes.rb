@@ -1,4 +1,6 @@
 Authentifyd::Engine.routes.draw do
+  root :to => redirect("/")
+
   devise_for :users, {
     class_name:		'Authentifyd::User',
     module: :devise,
@@ -11,5 +13,4 @@ Authentifyd::Engine.routes.draw do
 
   match 'authentications/:user_id/link', :controller => 'Authentications', :action => "link", :as => :link_accounts
   match 'authentications/:user_id/add', :controller => 'Authentications', :action => "add", :as => :add_account
-  root :to => 'home#index'
 end

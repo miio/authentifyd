@@ -9,13 +9,12 @@ Gem::Specification.new do |s|
   s.email       = ['nicolas.arbogast@gmail.com']
   s.homepage    = 'https://github.com/NicoArbogast/authentifyd.git'
   s.summary     = "Devise + Omniauth Authentication encapsulated in an Engine."
-  s.description     = "Devise + Omniauth Authentication encapsulated in an Engine. Uses Devise. Was inspired by perens-instant-user"
+  s.description     = "Devise + Omniauth Authentication encapsulated in an Engine. Uses Devise. Parts taken from perens-instant-user and sso-devise-omniauth-provider"
 
   s.files = Dir["{app,config,db,lib}/**/*"] + Dir["{app,config,db,lib}/**/**/*"] + ["MIT-LICENSE", "Rakefile", "README.rdoc"]
 
   s.add_dependency "rails", "~> 3.2.8"
   # s.add_dependency "jquery-rails"
-
   # s.add_dependency 'haml'
 
   s.add_dependency 'devise', '2.1.2'

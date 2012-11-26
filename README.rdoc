@@ -1,6 +1,6 @@
 = Authentifyd
 
-Devise + Omniauth Authentication encapsulated in an Engine. Uses Devise. Was inspired by perens-instant-user
+Devise + Omniauth Authentication encapsulated in an Engine. Uses Devise. Parts taken from perens-instant-user and sso-devise-omniauth-provider.
 
 == Installation
 
@@ -8,7 +8,17 @@ Devise + Omniauth Authentication encapsulated in an Engine. Uses Devise. Was ins
 * rake authentifyd:install:migrations
 * rake db:migrate
 * in config/routes.rb add:
-    mount Authentifyd::Engine => '/'
+    mount Authentifyd::Engine => "/#{your root for authentifyd}"
 * Configure Devise: copy paste http://raw.github.com/plataformatec/devise/master/lib/generators/templates/devise.rb in config/initializers/devise.rb. Edit it.
   * NB: set "config.pepper".
       ex: require 'securerandom' -> SecureRandom.hex(64)
+* Add Facebook and Twitter config files
+  * Example
+      staging:
+        app_id: APP ID FOR STAGING ENV
+        app_secret: APP SECRET FOR STAGING ENV
+      development: &development
+        app_id: APP ID FOR DEV ENV
+        app_secret: APP SECRET FOR DEV ENV
+      test:
+        <<: *development

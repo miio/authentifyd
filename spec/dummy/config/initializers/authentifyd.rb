@@ -1,0 +1,1 @@
+Authentifyd.path = "/aut"

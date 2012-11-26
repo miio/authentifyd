@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-
-  mount Authentifyd::Engine => "/"
   root :to => "home#index"
+
+  mount Authentifyd::Engine => Authentifyd.path
 end

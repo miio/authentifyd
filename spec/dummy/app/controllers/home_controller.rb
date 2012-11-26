@@ -1,9 +1,7 @@
 class HomeController < ApplicationController
+
   def index
-    if user_signed_in?
-      render :text => "You are signed in"
-    else
-      render :text => "Hello World"
-    end
+    render :text => (user_signed_in? ? "You are signed in" : "Hello World")
   end
+
 end

@@ -6,11 +6,14 @@ require "authentifyd/engine"
 
 module Authentifyd
 
-  mattr_accessor :devise_config, :omniauth_config
+  mattr_accessor :devise_config, :omniauth_config, :path
   def self.devise_config
     (@@devise_config || {}).reverse_merge({
       :registrations_controller   => 'Authentifyd::Registrations',
       :sessions_controller        => 'Authentifyd::Sessions'
     })
+  end
+  def self.path
+    @@path ||= "/"
   end
 end

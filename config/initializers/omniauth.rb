@@ -1,13 +1,22 @@
 # load facebook credentials
-facebook_apps = File.read(Rails.root.to_s + "/config/facebook.yml")
-FACEBOOK = YAML.load(facebook_apps)[Rails.env].symbolize_keys
+facebook_config = Rails.root.to_s + "/config/facebook.yml"
+if File.exist?(facebook_config)
+  facebook_apps = File.read(facebook_config)
+  FACEBOOK = YAML.load(facebook_apps)[Rails.env].symbolize_keys
+end
+
+twitter_config = Rails.root.to_s + "/config/twitter.yml"
+if File.exist?(twitter_config)
+  twitter_apps = File.read(twitter_config)
+  TWITTER = YAML.load(twitter_apps)[Rails.env].symbolize_keys
+end
 
 Rails.application.config.middleware.use OmniAuth::Builder do
   if defined?(TWITTER)
-    provider :twitter, TWITTER[:app_id], TWITTER[:app_secret]
+    provider :twitter, TWITTER[:app_id], TWITTER[:app_secret], :callback_path => "#{Authentifyd.path}/auth/twitter/callback"
   end
   if defined?(FACEBOOK)
-    provider :facebook, FACEBOOK[:app_id], FACEBOOK[:app_secret],
+    provider :facebook, FACEBOOK[:app_id], FACEBOOK[:app_secret], :callback_path => "#{Authentifyd.path}/auth/facebook/callback",
       :scope => "user_about_me,email"
                 # ( %w(email) + 
                 #(Authentifyd.omniauth_config.try(:[], :facebook).try(:[], :scope) || [])
