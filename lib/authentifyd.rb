@@ -19,8 +19,8 @@ module Authentifyd
     @@path ||= "/"
   end
 
-  def self.embeddable_callback_path
-    (Authentifyd.path_prefix ?  "#{Authentifyd.path_prefix}/" : '') + Authentifyd.path
+  def self.embeddable_callback_path(_path)
+    (Authentifyd.path_prefix ?  "#{Authentifyd.path_prefix}/" : '') + Authentifyd.path + _path
   end
 
 end
