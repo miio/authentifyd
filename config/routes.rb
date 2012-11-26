@@ -6,8 +6,8 @@ Authentifyd::Engine.routes.draw do
                     sessions: Authentifyd.devise_config[:sessions_controller]}
   }
 
-  match '/auth/:provider/callback', :to => 'authentications#create'
-  match '/auth/failure', :to => 'authentications#failure'
+  match 'auth/:provider/callback', :to => 'authentications#create'
+  match 'auth/failure', :to => 'authentications#failure'
 
   match 'authentications/:user_id/link' => 'authentications#link', :as => :link_accounts
   match 'authentications/:user_id/add' => 'authentications#add', :as => :add_account
