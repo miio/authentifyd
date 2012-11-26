@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    authentifyd (0.1.0)
+    authentifyd (1.0.1)
       devise (= 2.1.2)
       devise-encryptable
       omniauth
