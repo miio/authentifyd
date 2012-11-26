@@ -13,10 +13,12 @@ end
 
 Rails.application.config.middleware.use OmniAuth::Builder do
   if defined?(TWITTER)
-    provider :twitter, TWITTER[:app_id], TWITTER[:app_secret], :callback_path => "#{Authentifyd.path}/auth/twitter/callback"
+    provider :twitter, TWITTER[:app_id], TWITTER[:app_secret],
+      :callback_path => Authentifyd.embeddable_callback_path("/auth/twitter/callback")
   end
   if defined?(FACEBOOK)
-    provider :facebook, FACEBOOK[:app_id], FACEBOOK[:app_secret], :callback_path => "#{Authentifyd.path}/auth/facebook/callback",
+    provider :facebook, FACEBOOK[:app_id], FACEBOOK[:app_secret],
+      :callback_path => Authentifyd.embeddable_callback_path("/auth/facebook/callback"),
       :scope => "user_about_me,email"
                 # ( %w(email) + 
                 #(Authentifyd.omniauth_config.try(:[], :facebook).try(:[], :scope) || [])
