@@ -1,11 +1,11 @@
 PATH
   remote: .
   specs:
-    authentifyd (0.0.5)
+    authentifyd (0.0.0.1)
       devise (= 2.1.2)
       devise-encryptable
       omniauth
-      omniauth-facebook
+      omniauth-facebook (= 1.4.0)
       omniauth-twitter
       rails (~> 3.2.8)
 
@@ -82,12 +82,12 @@ GEM
     omniauth (1.1.1)
       hashie (~> 1.2)
       rack
-    omniauth-facebook (1.4.1)
-      omniauth-oauth2 (~> 1.1.0)
+    omniauth-facebook (1.4.0)
+      omniauth-oauth2 (~> 1.0.2)
     omniauth-oauth (1.0.1)
       oauth
       omniauth (~> 1.0)
-    omniauth-oauth2 (1.1.1)
+    omniauth-oauth2 (1.0.3)
       oauth2 (~> 0.8.0)
       omniauth (~> 1.0)
     omniauth-twitter (0.0.14)

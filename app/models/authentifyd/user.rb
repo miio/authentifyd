@@ -56,12 +56,3 @@ class Authentifyd::User < ActiveRecord::Base
   end
 
 end
-
-# FIXME - to put in sso_provider
-# class User < ActiveRecord::Base
-#   has_many :access_grants, :dependent => :delete_all
-#   self.token_authentication_key = "oauth_token"
-#   def self.find_for_token_authentication(conditions)
-#     where(["access_grants.access_token = ? AND (access_grants.access_token_expires_at IS NULL OR access_grants.access_token_expires_at > ?)", conditions[token_authentication_key], Time.now]).joins(:access_grants).select("users.*").first
-#   end
-# end
