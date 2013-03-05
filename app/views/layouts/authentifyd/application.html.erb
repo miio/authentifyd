@@ -3,6 +3,9 @@
 <head>
   <title>Authentifyd</title>
   <%= stylesheet_link_tag    "authentifyd/application", :media => "all" %>
+  <% if !!Authentifyd.custom_css %>
+    <%= stylesheet_link_tag  Authentifyd.custom_css, :media => "all" %>
+  <%end%>
   <%= javascript_include_tag "authentifyd/application" %>
   <%= csrf_meta_tags %>
 </head>
