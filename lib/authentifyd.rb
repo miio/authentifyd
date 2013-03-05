@@ -6,7 +6,7 @@ require "authentifyd/engine"
 
 module Authentifyd
 
-  mattr_accessor :devise_config, :omniauth_config, :path, :path_prefix, :custom_css
+  mattr_accessor :devise_config, :omniauth_config, :path, :path_prefix, :custom_css, :custom_js
 
   def self.devise_config
     (@@devise_config || {}).reverse_merge({

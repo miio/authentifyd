@@ -7,6 +7,9 @@
     <%= stylesheet_link_tag  Authentifyd.custom_css, :media => "all" %>
   <%end%>
   <%= javascript_include_tag "authentifyd/application" %>
+  <% if !!Authentifyd.custom_js %>
+    <%= javascript_include_tag  Authentifyd.custom_js%>
+  <%end%>
   <%= csrf_meta_tags %>
 </head>
 <body>
