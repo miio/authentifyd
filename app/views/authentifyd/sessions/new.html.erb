@@ -1,20 +1,46 @@
-<h2>Sign in</h2>
+<div class="container main">
 
-<%= form_for(resource, :as => resource_name, :url => session_path(resource_name)) do |f| %>
-  <%= devise_error_messages! %>
-  <p><%= f.label :email %><br />
-  <%= f.email_field :email %></p>
+    <div class="row-fluid">
+      <div id="login-wraper" class="span10 offset1">
+        <div class='span6 login-form-container'>
+          <div class="login-form">
+            <%= form_for(resource, :as => resource_name, :url => session_path(resource_name), :class => "form login-form") do |f| %>
+              <legend><%= t('Sign_in_with_your_email') %></legend>
+              <%= devise_error_messages! %>
+        
+              <div class="body">
+                  <%= f.label :email, t('Email') %>
+                  <%= f.email_field :email %>
+                    
+                  <%= f.label :password, t('Password') %>
+                  <%= f.password_field :password %>
+              </div>
+            
+              <div class="footer">
+                <% if devise_mapping.rememberable? -%>
+                  <%= f.label :remember_me, :class => "checkbox inline" do %>
+                    <%= f.check_box :remember_me, :id => "inlineCheckbox1" %><%=  t('Remember_me') %>
+                  <% end %>
+                <% end %>
+                                
+                <%= button_tag t("Sign_in"), :type => "submit", :class => "btn btn-primary" %>
+              </div>
+            
+            <% end %>
+          </div>
+        </div>
+        <div class='span6 login-providers-container'>  
+          <div class="login-form">
+            <legend><%= t('or_use_your_prefered_profile')%></legend>
+          </div>
+          <div class="body">
+            <%= render :partial => "social_networks" %>
+          </div>
+        </div>
+      </div>
+    </div>
+</div>
 
-  <p><%= f.label :password %><br />
-  <%= f.password_field :password %></p>
-
-  <% if devise_mapping.rememberable? -%>
-    <p><%= f.check_box :remember_me %> <%= f.label :remember_me %></p>
-  <% end -%>
-
-  <p><%= f.submit "Sign in" %></p>
-<% end %>
-
-<%= render :partial => "social_networks" %>
-
-<%= render :partial => "devise/shared/links" %>
+<footer class="white navbar-fixed-bottom">
+  <%= render :partial => "devise/shared/links" %>
+</footer>

@@ -5,7 +5,11 @@ Authentifyd::Engine.routes.draw do
     class_name:		'Authentifyd::User',
     module: :devise,
     controllers: {  registrations: Authentifyd.devise_config[:registrations_controller],
-                    sessions: Authentifyd.devise_config[:sessions_controller]}
+                    sessions: Authentifyd.devise_config[:sessions_controller],
+                    confirmations: Authentifyd.devise_config[:confirmations_controller],
+                    passwords: Authentifyd.devise_config[:passwords_controller],
+                    unlocks: Authentifyd.devise_config[:unlocks_controller]
+                  }
   }
 
   match "auth/:provider/callback", :controller => 'Authentications', :action => "create"

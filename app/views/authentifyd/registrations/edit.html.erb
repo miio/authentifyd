@@ -1,31 +1,48 @@
-<h2>Edit <%= resource_name.to_s.humanize %></h2>
+<div class="container main">
+  <div class="row-fluid">
+    <div id="allaround-wraper" class="big">
+      <div class='authentifyd-form'>
+        <%= form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => { :method => :put }, :class => "form register-form") do |f| %>
+          <legend>
+              <%= t('Edit') %>
+              <%= resource_name.to_s.humanize %>
+          </legend>
+          <%= devise_error_messages! %>
+        
+          <div class="body">
+            <%= f.label :email, t('Email') %>
+            <%= f.email_field :email %>
 
-<%= form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => { :method => :put }) do |f| %>
-  <%= devise_error_messages! %>
+            <%= f.label :password, t('Email') %> <i><%= t("leave_blank_if_you_dont_want_to_change_it") %></i>
+            <%= f.password_field :password %>
 
-  <p><%= f.label :first_name %><br />
-  <%= f.text_field :first_name %></p>
+            <%= f.label :password_confirmation, t('Password_confirmation') %>
+            <%= f.password_field :password_confirmation %>
 
-  <p><%= f.label :last_name %><br />
-  <%= f.text_field :last_name %></p>
+            <%= f.label :current_password, t('Current_password') %> <i><%= t("we_need_your_current_password_to_confirm_your_changes") %></i>
+            <%= f.password_field :current_password %>
 
-  <p><%= f.label :email %><br />
-  <%= f.email_field :email %></p>
+          </div>
+            
+          <div class="footer">                                
+            <%= button_tag t("Update"), :type => "submit", :class => "btn btn-primary" %>
+          </div>
+          
+          <div class="footer">                                
+            <h3><%= t('Cancel_my_account')%></h3>
 
-  <p><%= f.label :password %> <i>(leave blank if you don't want to change it)</i><br />
-  <%= f.password_field :password %></p>
+            <%= t('Unhappy?') %>
+            <%= link_to t("Cancel_my_account"), registration_path(resource_name), :confirm => t("Are_you_sure?"), :method => :delete %>
+            </br>
+            <%= link_to "Back", :back %>
+          </div>
+            
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>
 
-  <p><%= f.label :password_confirmation %><br />
-  <%= f.password_field :password_confirmation %></p>
-
-  <p><%= f.label :current_password %> <i>(we need your current password to confirm your changes)</i><br />
-  <%= f.password_field :current_password %></p>
-
-  <p><%= f.submit "Update" %></p>
-<% end %>
-
-<h3>Cancel my account</h3>
-
-<p>Unhappy? <%= link_to "Cancel my account", registration_path(resource_name), :confirm => "Are you sure?", :method => :delete %>.</p>
-
-<%= link_to "Back", :back %>
+<footer class="white navbar-fixed-bottom">
+  <%= render :partial => "devise/shared/links" %>
+</footer>
