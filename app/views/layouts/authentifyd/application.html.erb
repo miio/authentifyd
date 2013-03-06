@@ -18,9 +18,9 @@
               <%= t('Signed_in_as') %>
               <%= current_user.email %>
             </li>
-            <li class='btn btn-small pull-right'> <%= link_to t('Sign_out'), destroy_user_session_path %> </li>
+            <li class='btn btn-small pull-right'> <%= link_to t('Sign_out'), destroy_session_path(resource_name) %> </li>
           <% else %>  
-            <li class='btn btn-small pull-right'>  <%= link_to t('Please_log_in'), new_user_session_path %> </li>
+            <li class='btn btn-small pull-right'>  <%= link_to t('Please_log_in'), new_session_path(resource_name) %> </li>
           <% end %>
         </ul>
         <%= Authentifyd.top_navbar_snippet.try(:html_safe)%>
