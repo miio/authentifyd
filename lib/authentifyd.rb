@@ -29,6 +29,6 @@ module Authentifyd
   def self.configure(config = {})
     @@custom_head_snippet = config[:custom_head_snippet]
     @@custom_bottom_snippet = config[:custom_bottom_snippet]
-    @@top_navbar_snippet = config[:top_navbar_snippet]  
+    @@top_navbar_snippet = config[:top_navbar_snippet]
   end
 end

@@ -5,7 +5,7 @@
   <%= stylesheet_link_tag    "authentifyd/application", :media => "all" %>
   <%= javascript_include_tag "authentifyd/application" %>
   <%= csrf_meta_tags %>
-  <%= Authentifyd.custom_head_snippet.try(:html_safe) %>
+  <%= Authentifyd.custom_head_snippet.try(:call).try(:html_safe) %>
 </head>
 <body class=<%= defined?(@body_class) ? @body_class : nil %>>
 
@@ -23,7 +23,7 @@
             <li class='btn btn-small pull-right'>  <%= link_to t('Please_log_in'), new_session_path(resource_name) %> </li>
           <% end %>
         </ul>
-        <%= Authentifyd.top_navbar_snippet.try(:html_safe)%>
+        <%= Authentifyd.top_navbar_snippet.try(:call).try(:html_safe)%>
       </div>
     </div>
   </div>
@@ -33,7 +33,7 @@
 
   <%= yield %>
 
-  <%= Authentifyd.custom_bottom_snippet.try(:html_safe) %>
+  <%= Authentifyd.custom_bottom_snippet.try(:call).try(:html_safe) %>
   
 </body>
 </html>
