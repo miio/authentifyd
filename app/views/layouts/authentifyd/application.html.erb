@@ -5,10 +5,35 @@
   <%= stylesheet_link_tag    "authentifyd/application", :media => "all" %>
   <%= javascript_include_tag "authentifyd/application" %>
   <%= csrf_meta_tags %>
+  <%= Authentifyd.custom_head_snippet.try(:call).try(:html_safe) %>
 </head>
-<body>
+<body class=<%= defined?(@body_class) ? @body_class : nil %>>
 
-<%= yield %>
+  <div class="navbar navbar-fixed-top">
+    <div class="navbar-inner">
+      <div class="container">
+        <ul class="nav pull-right">
+          <% if user_signed_in? %>
+            <li class='navbar-text pull-right'>
+              <%= t('Signed_in_as') %>
+              <%= current_user.email %>
+            </li>
+            <li class='btn btn-small pull-right'> <%= link_to t('Sign_out'), destroy_session_path(resource_name) %> </li>
+          <% else %>  
+            <li class='btn btn-small pull-right'>  <%= link_to t('Please_log_in'), new_session_path(resource_name) %> </li>
+          <% end %>
+        </ul>
+        <%= Authentifyd.top_navbar_snippet.try(:call).try(:html_safe)%>
+      </div>
+    </div>
+  </div>
+  
+    
 
+
+  <%= yield %>
+
+  <%= Authentifyd.custom_bottom_snippet.try(:call).try(:html_safe) %>
+  
 </body>
 </html>

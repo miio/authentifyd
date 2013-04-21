@@ -1,4 +1,7 @@
 class Authentifyd::RegistrationsController < Devise::RegistrationsController
+  layout "authentifyd/application"
+  before_filter :define_body_class
+  
   def new
     # Building the resource with information that MAY BE available from omniauth!
     build_resource(:email => session[:omniauth_email])
@@ -27,4 +30,11 @@ class Authentifyd::RegistrationsController < Devise::RegistrationsController
       @user.valid?
     end
   end
+  
+  private
+  
+  def define_body_class
+    @body_class = "authentifyd_registrations_#{action_name}"
+  end
+  
 end
