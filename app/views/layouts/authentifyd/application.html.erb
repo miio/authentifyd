@@ -19,7 +19,7 @@
               <%= current_user.email %>
             </li>
             <li class='btn btn-small pull-right'> <%= link_to t('Sign_out'), destroy_session_path(resource_name) %> </li>
-          <% else %>  
+          <% elsif defined?(resource_name) %>  
             <li class='btn btn-small pull-right'>  <%= link_to t('Please_log_in'), new_session_path(resource_name) %> </li>
           <% end %>
         </ul>
