@@ -1,17 +1,17 @@
 # load facebook credentials
-facebook_config = Rails.root.to_s + "/config/services/facebook.yml"
+facebook_config = Rails.root.to_s + "/config/services/facebook.yml.erb"
 if File.exist?(facebook_config)
   facebook_apps = File.read(facebook_config)
   FACEBOOK = YAML.load(ERB.new(File.read(facebook_apps)).result)[Rails.env].symbolize_keys
 end
 
-twitter_config = Rails.root.to_s + "/config/services/twitter.yml"
+twitter_config = Rails.root.to_s + "/config/services/twitter.yml.erb"
 if File.exist?(twitter_config)
   twitter_apps = File.read(twitter_config)
   TWITTER = YAML.load(ERB.new(File.read(twitter_apps)).result)[Rails.env].symbolize_keys
 end
 
-google_config = Rails.root.to_s + "/config/services/google.yml"
+google_config = Rails.root.to_s + "/config/services/google.yml.erb"
 if File.exist?(google_config)
   google_apps = File.read(google_config)
   GOOGLE = YAML.load(ERB.new(File.read(google_apps)).result)[Rails.env].symbolize_keys
