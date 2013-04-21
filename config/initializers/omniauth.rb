@@ -1,20 +1,31 @@
 # load facebook credentials
-facebook_config = Rails.root.to_s + "/config/facebook.yml"
+facebook_config = Rails.root.to_s + "/config/services/facebook.yml"
 if File.exist?(facebook_config)
   facebook_apps = File.read(facebook_config)
   FACEBOOK = YAML.load(facebook_apps)[Rails.env].symbolize_keys
 end
 
-twitter_config = Rails.root.to_s + "/config/twitter.yml"
+twitter_config = Rails.root.to_s + "/config/services/twitter.yml"
 if File.exist?(twitter_config)
   twitter_apps = File.read(twitter_config)
   TWITTER = YAML.load(twitter_apps)[Rails.env].symbolize_keys
+end
+
+google_config = Rails.root.to_s + "/config/services/google.yml"
+if File.exist?(google_config)
+  google_apps = File.read(google_config)
+  GOOGLE = YAML.load(google_apps)[Rails.env].symbolize_keys
 end
 
 Rails.application.config.middleware.use OmniAuth::Builder do
   if defined?(TWITTER)
     provider :twitter, TWITTER[:app_id], TWITTER[:app_secret],
       :callback_path => Authentifyd.embeddable_callback_path("/auth/twitter/callback")
+  end
+  if defined?(GOOGLE)
+    provider :google_oauth2, GOOGLE[:app_id], GOOGLE[:app_secret],
+      :callback_path => Authentifyd.embeddable_callback_path("/auth/google_oauth2/callback"),
+      :scope => "userinfo.email,userinfo.profile,plus.me"
   end
   if defined?(FACEBOOK)
     provider :facebook, FACEBOOK[:app_id], FACEBOOK[:app_secret],

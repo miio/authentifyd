@@ -1,4 +1,15 @@
 <div>
-<%= link_to image_tag("authentifyd/signin_with_twitter.png", :alt => "Twitter"), '/auth/twitter' %>
-<%= link_to image_tag("authentifyd/signin_with_fb.png", :alt => "Facebook"), '/auth/facebook' %>
+  <% if defined?(TWITTER)%>
+    <%= link_to image_tag("authentifyd/signin_with_twitter.png", :alt => "Twitter"), '/auth/twitter' %>
+    <br/>
+  <% end %>
+  <% if defined?(FACEBOOK)%>
+    <%= link_to image_tag("authentifyd/signin_with_fb.png", :alt => "Facebook"), '/auth/facebook' %>
+    <br/>
+  <% end %>
+  <% if defined?(GOOGLE)%>
+    <%= link_to image_tag("authentifyd/signin_with_google.png", :alt => "Google", width: '287' ), '/auth/google_oauth2'%>
+    <br/>
+    
+  <% end %>
 </div>
