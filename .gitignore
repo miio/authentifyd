@@ -8,3 +8,4 @@ spec/dummy/.sass-cache
 spec/dummy/config/initializers/mails.rb
 spec/dummy/config/facebook.yml
 spec/dummy/config/twitter.yml
+spec/dummy/config/database.yml
