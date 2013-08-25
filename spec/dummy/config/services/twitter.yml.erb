@@ -1,0 +1,11 @@
+production:
+  app_id: <%= ENV['TWITTER_APP_ID_PROD'] %>
+  app_secret: <%= ENV['TWITTER_APP_SECRET_PROD'] %>
+staging: &staging
+  app_id: <%= ENV['TWITTER_APP_ID_STAGING'] %>
+  app_secret: <%= ENV['TWITTER_APP_SECRET_STAGING'] %>
+development:
+  app_id: <%= ENV['TWITTER_APP_ID_DEV'] %>
+  app_secret: <%= ENV['TWITTER_APP_SECRET_DEV'] %>
+test:
+  <<: *staging

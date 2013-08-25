@@ -8,28 +8,8 @@
   <%= Authentifyd.custom_head_snippet.try(:call).try(:html_safe) %>
 </head>
 <body class=<%= defined?(@body_class) ? @body_class : nil %>>
-
-  <div class="navbar navbar-fixed-top">
-    <div class="navbar-inner">
-      <div class="container">
-        <ul class="nav pull-right">
-          <% if user_signed_in? %>
-            <li class='navbar-text pull-right'>
-              <%= t('Signed_in_as') %>
-              <%= current_user.email %>
-            </li>
-            <li class='btn btn-small pull-right'> <%= link_to t('Sign_out'), destroy_session_path(resource_name) %> </li>
-          <% elsif defined?(resource_name) %>  
-            <li class='btn btn-small pull-right'>  <%= link_to t('Please_log_in'), new_session_path(resource_name) %> </li>
-          <% end %>
-        </ul>
-        <%= Authentifyd.top_navbar_snippet.try(:call).try(:html_safe)%>
-      </div>
-    </div>
-  </div>
   
-    
-
+  <%= render partial: "/layouts/authentifyd/navbar" %>
 
   <%= yield %>
 

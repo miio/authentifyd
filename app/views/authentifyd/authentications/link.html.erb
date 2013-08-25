@@ -1,8 +1,14 @@
-<h2> This email is already taken - Sign in to link these accounts!</h2>
+<div class="container main">
+  <div class="row-fluid">
+    <div id="allaround-wraper" class="big">
+      <h2><%= t('This_email_is_already_taken_Sign_in_to_link_these_accounts')%> </h2>
 
-<%= form_for([:authentifyd, @user], :url => add_account_path(@user)) do |f| %>
-  <p><%= f.label :password %><br />
-  <%= f.password_field :password %></p>
+      <%= form_for([:authentifyd, @user], :url => add_account_path(@user)) do |f| %>
+        <p><%= f.label :password%><br />
+        <%= f.password_field :password %></p>
 
-  <p><%= f.submit "Sign in" %></p>
-<% end %>
+        <p><%= f.submit t("Sign_in") %></p>
+      <% end %>
+    </div>
+  </div>
+</div>

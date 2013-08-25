@@ -1,15 +1,11 @@
-development:
-  app_id: 
-  app_secret: 
 production:
-  app_id:
-  app_secret:
+  app_id: <%= ENV['FACEBOOK_APP_ID_PROD'] %>
+  app_secret: <%= ENV['FACEBOOK_APP_SECRET_PROD'] %>
+staging: &staging
+  app_id: <%= ENV['FACEBOOK_APP_ID_STAGING'] %>
+  app_secret: <%= ENV['FACEBOOK_APP_SECRET_STAGING'] %>
+development:
+  app_id: <%= ENV['FACEBOOK_APP_ID_DEV'] %>
+  app_secret: <%= ENV['FACEBOOK_APP_SECRET_DEV'] %>
 test:
-  app_id:
-  app_secret:
-staging:
-  app_id:
-  app_secret:
-  
-  
-  
+  <<: *staging

@@ -10,31 +10,49 @@
           <%= devise_error_messages! %>
         
           <div class="body">
-            <%= f.label :email, t('Email') %>
-            <%= f.email_field :email %>
+            <fieldset>
+              <%= f.label :email, t('Email') %>
+              <%= f.email_field :email %>
+            </fieldset>
+            <fieldset>
+              <%= f.label :password, t('Password') %> <i><%= t("leave_blank_if_you_dont_want_to_change_it") %></i>
+              <%= f.password_field :password %>
 
-            <%= f.label :password, t('Email') %> <i><%= t("leave_blank_if_you_dont_want_to_change_it") %></i>
-            <%= f.password_field :password %>
+              <%= f.label :password_confirmation, t('Password_confirmation') %>
+              <%= f.password_field :password_confirmation %>
 
-            <%= f.label :password_confirmation, t('Password_confirmation') %>
-            <%= f.password_field :password_confirmation %>
-
-            <%= f.label :current_password, t('Current_password') %> <i><%= t("we_need_your_current_password_to_confirm_your_changes") %></i>
-            <%= f.password_field :current_password %>
-
+              <%= f.label :current_password, t('Current_password') %> <i><%= t("we_need_your_current_password_to_confirm_your_changes") %></i>
+              <%= f.password_field :current_password %>
+            </fieldset>
           </div>
             
           <div class="footer">                                
             <%= button_tag t("Update"), :type => "submit", :class => "btn btn-primary" %>
           </div>
+          </br>
+          <div class='row-fluid'>
+            <div class="devise-shared-links">
+              <%= render :partial => "authentifyd/devise/shared/links" %>
+            </div>
+          </div>
           
+          
+          </br>
           <div class="footer">                                
-            <h3><%= t('Cancel_my_account')%></h3>
+            <legend><%= t('Cancel_my_account')%></legend>
 
-            <%= t('Unhappy?') %>
-            <%= link_to t("Cancel_my_account"), registration_path(resource_name), :confirm => t("Are_you_sure?"), :method => :delete %>
+            <%= link_to registration_path(resource_name), :confirm => t("Are_you_sure?"), :method => :delete, class: 'btn btn-danger' do %>
+              <i class='icon-remove'></i>
+              &nbsp;
+              <%= t("Cancel_my_account") %>
+            <% end %>
             </br>
-            <%= link_to "Back", :back %>
+            </br>
+            <%= link_to :back do %>
+              <i class='icon-arrow-left'></i>
+              &nbsp;
+              <%= t("Back") %>
+            <% end %>
           </div>
             
         <% end %>
@@ -42,7 +60,3 @@
     </div>
   </div>
 </div>
-
-<footer class="white navbar-fixed-bottom">
-  <%= render :partial => "devise/shared/links" %>
-</footer>

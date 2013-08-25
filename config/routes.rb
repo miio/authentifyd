@@ -17,4 +17,6 @@ Authentifyd::Engine.routes.draw do
 
   match "authentications/:user_id/link", :controller => 'Authentications', :action => "link", :as => :link_accounts
   match "authentications/:user_id/add", :controller => 'Authentications', :action => "add", :as => :add_account
+  match "authentications", :controller => 'Authentications', :action => "index", :as => :accounts
+  match "authentications/:id", controller: 'Authentications', action: "destroy", method: :delete, as: :destroy_account
 end

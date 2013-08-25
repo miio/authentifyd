@@ -1,4 +1,30 @@
 en:
+  Unlink_account: "Unlink accounts"
+  Existing_linked_accounts: "Existing linked accounts"
+  You_have_not_linked_any_account_yet: "You have not linked any account yet"
+  Link_other_accounts: "Link your other accounts"
+
+  This_email_is_already_taken_Sign_in_to_link_these_accounts: "This email is already taken - Sign in to link these accounts!"
+
+  Welcome: 'Welcome'
+  You_can_confirm_your_account_email_through_the_link_below: "You can confirm your account email through the link below:"
+  Confirm_my_account: "Confirm my account"
+  
+  Hello: 'Hello'
+  Someone_has_requested_a_link_to_change_your_password_and_you_can_do_this_through_the_link_below: "Someone has requested a link to change your password, and you can do this through the link below."
+  Change_my_password: "Change my password"
+  If_you_didnt_request_this_please_ignore_this_email: "If you didn't request this, please ignore this email."
+  Your_password_wont_change_until_you_access_the_link_above_and_create_a_new_one: "Your password won't change until you access the link above and create a new one."
+  
+  Your_account_has_been_locked_due_to_an_excessive_amount_of_unsuccessful_sign_in_attempts: "Your account has been locked due to an excessive amount of unsuccessful sign in attempts."
+  Click_the_link_below_to_unlock_your_account: "Click the link below to unlock your account:"
+  Unlock_my_account: "Unlock my account"
+  
+  Forgot_your_password: "Forgot your password?"
+  Didnt_receive_confirmation_instructions: "Didn't receive confirmation instructions?"
+  Didnt_receive_unlock_instructions: "Didn't receive unlock instructions?"
+  Sign_in_with: "Sign in with"
+  
   errors:
     messages:
       not_found: "not found"

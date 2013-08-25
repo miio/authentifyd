@@ -1,0 +1,19 @@
+<div class="container main">
+  <div class="row-fluid">
+    <div id="allaround-wraper" class="big">
+      <legend><%= t("Existing_linked_accounts") %></legend>
+      <div class='providers-list row-fluid'>
+        <%= render @authentications %>
+      </div>
+      <% if @authentications.empty? %>
+        <%= t("You_have_not_linked_any_account_yet") %>
+      <% end %>
+
+      </br>
+      </br>
+      <legend><%= t("Link_other_accounts") %></legend>
+      <%= render :partial => "authentifyd/sessions/social_networks" %>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,2 +1,6 @@
 en:
   Are_you_sure?: "Are you sure?"
+  Already_a_member: "Are you already a member ?"
+  Not_already_a_member: "Are you not already a member ?"
+  Sign_up: "Create an account"
+  Sign_in: "Log in"

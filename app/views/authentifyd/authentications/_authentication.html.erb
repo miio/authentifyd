@@ -1,0 +1,15 @@
+<div class='span12 <%= "provider-li #{authentication.provider}" %>'>
+  <div class='pull-left'>
+    <%= image_tag "authentifyd/#{authentication.provider}-logo.png", :class=>'pull-left', :width => '30'%>
+    &nbsp;
+    <%= authentication.provider.try(:capitalize) %>
+  </div>
+  <div class='pull-right'>
+    <%= link_to destroy_account_path(authentication) do %>
+      <i class='icon-remove'></i>&nbsp;
+      <%= t("Unlink_account") %>
+    <% end %>
+  </div>
+  <div class='clearfix'></div>
+  </br>
+</div>

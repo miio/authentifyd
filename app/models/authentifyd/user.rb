@@ -31,7 +31,7 @@ class Authentifyd::User < ActiveRecord::Base
   # called before_validation
   #
   def generate_password_token
-    unless self.password
+    unless self.encrypted_password
       pwd = Devise.friendly_token[0,20]
       self.password = pwd
       set_reset_password_token

@@ -1,15 +1,23 @@
 <div>
   <% if defined?(TWITTER)%>
-    <%= link_to image_tag("authentifyd/signin_with_twitter.png", :alt => "Twitter"), '/auth/twitter' %>
-    <br/>
+    <% unless user_signed_in? && current_user.authentications.map(&:provider).include?('twitter') %>
+      <%= link_to image_tag("authentifyd/signin_with_twitter.png", :alt => "Twitter"), '/auth/twitter' %>
+    <% end %>
+    </br>                    
+    </br>                    
   <% end %>
   <% if defined?(FACEBOOK)%>
-    <%= link_to image_tag("authentifyd/signin_with_fb.png", :alt => "Facebook"), '/auth/facebook' %>
-    <br/>
+    <% unless user_signed_in? && current_user.authentications.map(&:provider).include?('facebook') %>
+      <%= link_to image_tag("authentifyd/signin_with_fb.png", :alt => "Facebook"), '/auth/facebook' %>
+    <% end %>
+    </br>
+    </br>                        
   <% end %>
   <% if defined?(GOOGLE)%>
-    <%= link_to image_tag("authentifyd/signin_with_google.png", :alt => "Google", width: '287' ), '/auth/google_oauth2'%>
-    <br/>
-    
+    <% unless user_signed_in? && current_user.authentications.map(&:provider).include?('google') %>
+      <%= link_to image_tag("authentifyd/signin_with_google.png", :alt => "Google", width: '287' ), '/auth/google_oauth2'%>
+    <% end %>
+    </br>
+    </br>                    
   <% end %>
 </div>

@@ -1,6 +1,7 @@
 class Authentifyd::AuthenticationsController < Authentifyd::ApplicationController
   before_filter :authenticate_user!, :except => [:create, :link, :add]
-
+  before_filter :check_id_correct, :only => [:link, :add]
+  
   def index
     @authentications = current_user.authentications.all
 
@@ -15,20 +16,20 @@ class Authentifyd::AuthenticationsController < Authentifyd::ApplicationControlle
   end
 
   def add
-    user = Authentifyd::User.find(params[:user_id])
-    if user.valid_password?(params[:user][:password])
+    @user ||= Authentifyd::User.find(params[:user_id])
+    if @user.valid_password?(params[:user][:password])
       omniauth = session[:omniauth]
-      user.authentications.create!(:provider => omniauth['provider'], :uid => omniauth['uid'])
+      @user.authentications.create!(:provider => omniauth['provider'], :uid => omniauth['uid'])
       session[:omniauth] = nil
-      sign_in_and_redirect(:user, user)
+      sign_in_and_redirect(:user, @user)
     else
       flash[:notice] = "Incorrect Password"
-      return redirect_to link_accounts_url(user.id)
+      return redirect_to link_accounts_url(@user.id)
     end
   end
 
   def link
-    @user = Authentifyd::User.find(params[:user_id])
+    @user ||= Authentifyd::User.find(params[:user_id])
   end
 
   def create
@@ -38,23 +39,28 @@ class Authentifyd::AuthenticationsController < Authentifyd::ApplicationControlle
       flash[:notice] = "Signed in successfully"
       sign_in_and_redirect(:user, authentication.user)
     else
-      user = Authentifyd::User.new
-      user.apply_omniauth(omniauth)
-      user.email = omniauth["info"] && omniauth["info"]["email"]
-      if user.save
-        flash[:notice] = "Successfully registered"
-        sign_in_and_redirect(:user, user)
+      user = user_signed_in? ? current_user : Authentifyd::User.new
+      user.apply_omniauth(omniauth)      
+      if user_signed_in?
+        user.save
+        redirect_to accounts_url
       else
-        session[:omniauth] = omniauth.except('extra')
-        session[:omniauth_email] = omniauth["info"] && omniauth["info"]["email"]
+        user.email = (omniauth["info"] && omniauth["info"]["email"]) unless user_signed_in?        
+        if user.save
+          flash[:notice] = "Successfully registered"
+          sign_in_and_redirect(:user, user)
+        else
+          session[:omniauth] = omniauth.except('extra')
+          session[:omniauth_email] = omniauth["info"] && omniauth["info"]["email"]
 
-        # Check if email already taken. If so, ask user to link_accounts
-        if user.errors[:email][0] =~ /has already been taken/ # omniauth? TBD
-          # fetch the user with this email id!
-          user = Authentifyd::User.find_by_email(user.email)
-          return redirect_to link_accounts_url(user.id)
+          # Check if email already taken. If so, ask user to link_accounts
+          if user.errors[:email][0] =~ /has already been taken/ # omniauth? TBD
+            # fetch the user with this email id!
+            user = Authentifyd::User.find_by_email(user.email)
+            return redirect_to link_accounts_url(user.id)
+          end
+          redirect_to new_user_registration_url
         end
-        redirect_to new_user_registration_url
       end
     end
   end
@@ -69,8 +75,16 @@ class Authentifyd::AuthenticationsController < Authentifyd::ApplicationControlle
     @authentication.destroy
 
     respond_to do |format|
-      format.html { redirect_to(authentications_url) }
+      format.html { redirect_to(accounts_url) }
       format.xml  { head :ok }
+    end
+  end
+  
+  private
+  
+  def check_id_correct
+    unless @user = Authentifyd::User.find_by_id(params[:user_id])
+      redirect_to new_user_session_url
     end
   end
 end

@@ -1,0 +1,27 @@
+#header.navbar
+  .navbar-inner.clearfix
+    .container-fluid
+      %ul.sign_in_block.nav.navbar-nav
+        - if user_signed_in?
+          %li.dropdown.pull-right
+            = link_to"#", class:"dropdown-toggle", id:"dLabel", role:"button", :'data-toggle'=>"dropdown", :'data-target'=>"#" do
+              = current_user.email
+              &nbsp;
+              %i.icon-caret-down.inline
+            %ul.dropdown-menu{role:"menu", :'aria-labelledby'=>"dLabel"}
+              %li
+                = link_to edit_user_registration_path, class: 'btn no_btn' do
+                  %i.icon-cog.inline
+                  &nbsp;
+                  = t('My_account')
+              %li
+                = link_to destroy_session_path(:user), class: 'btn no_btn' do
+                  %i.icon-signout.inline
+                  &nbsp;
+                  = t('Sign_out')
+        - else
+          %li.pull-right
+            = link_to new_session_path(:user), class: 'btn no_btn icon_btn' do
+              %i.icon-user.icon-4x
+              = t('Connect')
+      = Authentifyd.top_navbar_snippet.try(:call).try(:html_safe)
