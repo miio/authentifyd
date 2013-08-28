@@ -1,4 +1,6 @@
 class Authentifyd::RegistrationsController < Devise::RegistrationsController
+  include Localyzed::LocalyzedController
+
   layout "authentifyd/application"
   before_filter :define_body_class
   

@@ -1,6 +1,6 @@
 <div class="container main">
   <div class="row-fluid">
-    <div id="register-wraper" class="span10 offset1">
+    <div id="register-wraper" class="span12">
       <div class='span6 register-form-container'>
         <div id="register-form">
           <%= form_for(resource, :as => resource_name, :url => registration_path(resource_name), :class => "form register-form") do |f| %>
@@ -14,7 +14,7 @@
                 <%= f.label :password, t('Password') %>
                 <%= f.password_field :password %>
                   
-                <%= f.label :password_confirmation %>
+                <%= f.label :password_confirmation, t('Password_confirmation') %>
                 <%= f.password_field :password_confirmation %>
             </div>
             
@@ -25,7 +25,8 @@
           <% end %>
         </div>
       </div>
-      <div class='span6 register-providers-container'>  
+      <div class='span1'> </div>
+      <div class='span5 register-providers-container'>  
         <div class="login-form">
           <legend><%= t('or_use_your_prefered_profile')%></legend>
           <div class="body">

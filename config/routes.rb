@@ -1,6 +1,4 @@
 Authentifyd::Engine.routes.draw do
-  root :to => redirect("/")
-
   devise_for :users, {
     class_name:		'Authentifyd::User',
     module: :devise,
@@ -12,11 +10,21 @@ Authentifyd::Engine.routes.draw do
                   }
   }
 
-  match "auth/:provider/callback", :controller => 'Authentications', :action => "create"
-  match "auth/failure", :controller => 'Authentications', :action => "failure"
+  match "authentications/:user_id/link", :controller => 'authentications', :action => "link", :as => :link_accounts
+  match "authentications/:user_id/add", :controller => 'authentications', :action => "add", :as => :add_account
+  
+  get "authentications", :controller => 'authentications', :action => "index", :as => :accounts
+  delete "authentications/:id", controller: 'authentications', action: "destroy", as: :destroy_account
+  
+  root :to => "authentications#index"
+  #root :to => redirect("/")
+end
 
-  match "authentications/:user_id/link", :controller => 'Authentications', :action => "link", :as => :link_accounts
-  match "authentications/:user_id/add", :controller => 'Authentications', :action => "add", :as => :add_account
-  match "authentications", :controller => 'Authentications', :action => "index", :as => :accounts
-  match "authentications/:id", controller: 'Authentications', action: "destroy", method: :delete, as: :destroy_account
+# prefix_on_default_locale => /:controller will not respond to request, only /:locale/:controller will
+# => that is why we need to ad a block below with the redirect mechanism for all requests without :locale
+Localyzed.localyze_routes('config/locales/authentifyd/routes.yml', { :prefix_on_default_locale => true, :custom_route_set => Authentifyd::Engine.routes, :keep_untranslated_routes => true }) #, :uniq_translated_root => true})
+
+Authentifyd::Engine.routes.draw do
+  match "auth/:provider/callback", :controller => 'authentications', :action => "create"
+  match "auth/failure", :controller => 'authentications', :action => "failure"
 end

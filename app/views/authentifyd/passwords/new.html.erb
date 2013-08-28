@@ -2,12 +2,12 @@
   <div id="allaround-wraper">
     <div class="authentifyd-form">
       <%= form_for(resource, :as => resource_name, :url => password_path(resource_name), :html => { :method => :post }) do |f| %>
-        <legend><%= t('Forgot_your_password?') %></legend>
+        <legend><%= t('Forgot_your_password') %></legend>
         <%= devise_error_messages! %>
         
         <div class="body">
           
-            <%= f.label :email %>
+            <%= f.label :email, t('Email') %>
             <%= f.email_field :email %>
 
         </div>

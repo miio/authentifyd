@@ -1,5 +1,5 @@
 <div>
-  <% if defined?(TWITTER)%>
+  <% if defined?(TWITTER) && user_signed_in? %>
     <% unless user_signed_in? && current_user.authentications.map(&:provider).include?('twitter') %>
       <%= link_to image_tag("authentifyd/signin_with_twitter.png", :alt => "Twitter"), '/auth/twitter' %>
     <% end %>
@@ -14,7 +14,7 @@
     </br>                        
   <% end %>
   <% if defined?(GOOGLE)%>
-    <% unless user_signed_in? && current_user.authentications.map(&:provider).include?('google') %>
+    <% unless user_signed_in? && current_user.authentications.map(&:provider).include?('google_oauth2') %>
       <%= link_to image_tag("authentifyd/signin_with_google.png", :alt => "Google", width: '287' ), '/auth/google_oauth2'%>
     <% end %>
     </br>

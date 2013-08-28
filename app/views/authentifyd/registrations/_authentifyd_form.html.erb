@@ -1,0 +1,52 @@
+<div class='authentifyd-form'>
+  <%= form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => { :method => :put }, :class => "form register-form") do |f| %>
+    <legend>
+        <%= t('Edit_account') %>
+    </legend>
+    <%= devise_error_messages! %>
+  
+    <div class="body">
+      <fieldset>
+        <%= f.label :email, t('Email') %>
+        <%= f.email_field :email %>
+      </fieldset>
+      <fieldset>
+        <%= f.label :password, t('Password') %> <i><%= t("leave_blank_if_you_dont_want_to_change_it") %></i>
+        <%= f.password_field :password %>
+
+        <%= f.label :password_confirmation, t('Password_confirmation') %>
+        <%= f.password_field :password_confirmation %>
+
+        <%= f.label :current_password, t('Current_password') %> <i><%= t("we_need_your_current_password_to_confirm_your_changes") %></i>
+        <%= f.password_field :current_password %>
+      </fieldset>
+    </div>
+      
+    <div class="footer">                                
+      <%= button_tag t("Update"), :type => "submit", :class => "btn btn-primary" %>
+    </div>
+  <% end %>
+  <div class='row-fluid'>
+    <div class="devise-shared-links">
+      <%= render :partial => "authentifyd/devise/shared/links" %>
+    </div>
+  </div>
+  
+  </br>
+  </br>
+  <div class="footer">                                
+    <%= link_to registration_path(resource_name), :confirm => t("Are_you_sure"), :method => :delete, class: 'btn btn-danger' do %>
+      <i class='icon-remove'></i>
+      &nbsp;
+      <%= t("Cancel_my_account") %>
+    <% end %>
+    </br>
+    </br>
+    </br>
+    <%= link_to :back do %>
+      <i class='icon-arrow-left'></i>
+      &nbsp;
+      <%= t("Back") %>
+    <% end %>
+  </div>
+</div>

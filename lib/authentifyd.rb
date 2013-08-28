@@ -4,7 +4,10 @@ require 'omniauth-facebook'
 require 'omniauth-twitter'
 require 'omniauth-google-oauth2'
 require "haml"
+require 'localyzed'
+
 require "authentifyd/engine"
+
 
 module Authentifyd
 
@@ -12,11 +15,11 @@ module Authentifyd
 
   def self.devise_config
     (@@devise_config || {}).reverse_merge({
-      :registrations_controller   => 'Authentifyd::Registrations',
-      :sessions_controller        => 'Authentifyd::Sessions',
-      :confirmations_controller   => 'Authentifyd::Confirmations',
-      :passwords_controller       => 'Authentifyd::Passwords',
-      :unlocks_controller         => 'Authentifyd::Unlocks'
+      :registrations_controller   => 'authentifyd/registrations',
+      :sessions_controller        => 'authentifyd/sessions',
+      :confirmations_controller   => 'authentifyd/confirmations',
+      :passwords_controller       => 'authentifyd/passwords',
+      :unlocks_controller         => 'authentifyd/unlocks'
     })
   end
 

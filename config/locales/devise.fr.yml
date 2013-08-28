@@ -27,6 +27,34 @@ fr:
   Didnt_receive_unlock_instructions: "Vous n'avez pas reçu le mail pour débloquer votre compte?"
   Sign_in_with: "Connectez-vous avec"
   
+  Sign_in_with_your_email: "Connectez-vous avec votre email"
+  Email: "Email"
+  Password: "Mot de passe"
+  Remember_me: "Se souvenir de moi"
+  or_use_your_prefered_profile: "Ou utilisez votre profil préféré"
+  
+  Resend_confirmation_instructions: "Recevoir un nouvel email de confirmation"
+
+  Change_your_password: "Modifier mon mot de passe"
+
+  Send_me_reset_password_instructions: "Recevoir un email pour modifier mon mot de passe"
+  Send: "Envoyer"
+
+  Resend_unlock_instructions: "Recevoir un email pour débloquer mon compte"
+
+  Edit_account: "Modifier mon compte"
+  Password_confirmation: "Confirmation du mot de passe"
+  leave_blank_if_you_dont_want_to_change_it: "Laisser vide si vous ne souhaitez pas changer le mot de passe"
+  Current_password: "Mot de passe actuel"
+  we_need_your_current_password_to_confirm_your_changes: "Nous devons vérifier votre mot de passe actuel pour pouvoir le modifier"
+  Update: "Mettre à jour"
+  Cancel_my_account: "Détruire mon compte"
+  Are_you_sure: "Etes-vous sûr(e) ?"
+  Back: "Retour"
+  
+  Sign_up_with_your_email: "Inscrivez-vous avec votre email"
+  Sign_up: "M'inscrire"
+    
   devise:
     confirmations:
       confirmed: 'Votre compte a été validé, vous êtes maintenant connecté'

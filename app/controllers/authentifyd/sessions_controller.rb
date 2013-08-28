@@ -1,4 +1,5 @@
 class Authentifyd::SessionsController < Devise::SessionsController
+  include Localyzed::LocalyzedController
   layout "authentifyd/application"
   # before_filter :define_body_class
 

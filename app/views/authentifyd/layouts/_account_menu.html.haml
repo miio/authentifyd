@@ -1,0 +1,24 @@
+.container.main
+  .row-fluid
+    #allaround-wraper.big
+      .row-fluid
+        .span4
+          .padded-right
+            %ul.padded-right.nav.nav-pills.nav-stacked
+              %li.nav-header
+                %legend= current_user.email
+            %ul.padded-horiz.nav.nav-pills.nav-stacked
+              - is_on_edit_account_page = controller_name == 'registrations' && action_name == 'edit'
+              %li{class: "#{is_on_edit_account_page ? 'active' : ''}"}
+                = link_to is_on_edit_account_page ? '#' : edit_user_registration_path do
+                  %i.icon-edit
+                  &nbsp;
+                  = t('Edit_account')
+              - is_on_linked_accounts_page =  controller_name == 'authentications' && action_name == 'index'
+              %li{class: "#{is_on_linked_accounts_page ? 'active' : ''}"}
+                = link_to is_on_linked_accounts_page ? '#' : accounts_path do
+                  %i.icon-link.inline
+                  &nbsp;
+                  = t('Linked_accounts')
+        .span8
+          = yield

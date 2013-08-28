@@ -24,6 +24,8 @@ Gem::Specification.new do |s|
   s.add_dependency 'omniauth-twitter'
   s.add_dependency 'omniauth-google-oauth2'
   s.add_dependency 'haml-rails'
+  
+  s.add_dependency 'localyzed'
 
   s.add_development_dependency "mysql2"
   s.add_development_dependency "rspec-rails"

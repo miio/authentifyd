@@ -1,5 +1,5 @@
 <%- if devise_mapping.recoverable? && controller_name != 'passwords' %>
-  <%= link_to <%= t('Forgot_your_password'), new_password_path(resource_name) %><br />
+  <%= link_to t('Forgot_your_password'), new_password_path(resource_name) %><br />
 <% end -%>
 
 <%- if devise_mapping.confirmable? && controller_name != 'confirmations' && !user_signed_in? %>
@@ -12,19 +12,19 @@
 
 <%- if devise_mapping.omniauthable? %>
   <%- resource_class.omniauth_providers.each do |provider| %>
-    <%= link_to "#{t("Sign_in_with")} #{provider.to_s.titleize}", omniauth_authorize_path(resource_name, provider) %><br />
+    <%= link_to "#{t('Sign_in_with')} #{provider.to_s.titleize}", omniauth_authorize_path(resource_name, provider) %><br />
   <% end -%>
 <% end -%>
 
 <%- if controller_name != 'sessions' && !user_signed_in? %>
   <br/>
   <legend><%= t('Already_a_member') %></legend>
-  <%= link_to t("Sign_in"), new_session_path(resource_name), :class => "sign_in_link_in_links" %><br />
+  <%= link_to t("Sign_in"), new_session_path(resource_name), :class => "sign_in_link_in_links btn" %><br />
 <% end -%>
 
 <%- if devise_mapping.registerable? && controller_name != 'registrations' %>
   <br/>
   <legend><%= t('Not_already_a_member') %></legend>
-  <%= link_to t("Sign_up"), new_registration_path(resource_name), :class => "sign_up_link_in_links" %><br />
+  <%= link_to t("Sign_up"), new_registration_path(resource_name), :class => "sign_up_link_in_links btn" %><br />
 <% end -%>
 

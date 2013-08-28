@@ -15,6 +15,11 @@
                   &nbsp;
                   = t('My_account')
               %li
+                = link_to accounts_path, class: 'btn no_btn' do
+                  %i.icon-link.inline
+                  &nbsp;
+                  = t('Linked_accounts')
+              %li
                 = link_to destroy_session_path(:user), class: 'btn no_btn' do
                   %i.icon-signout.inline
                   &nbsp;
@@ -24,4 +29,13 @@
             = link_to new_session_path(:user), class: 'btn no_btn icon_btn' do
               %i.icon-user.icon-4x
               = t('Connect')
+        %li#authentifyd_language_selector.dropdown.pull-right
+          = link_to "#", class:"dropdown-toggle", id:"dLabel", role:"button", :'data-toggle'=>"dropdown", :'data-target'=>"#" do
+            = image_tag "authentifyd/#{I18n.locale}.png", width: '15'
+          %ul.dropdown-menu{role:"menu", :'aria-labelledby'=>"dLabel"}
+            - I18n.available_locales.select{|ll| ll != I18n.locale }.each do |l|
+              %li
+                = link_to url_for(params.merge(locale: l)), class: 'btn no_btn' do
+                  = image_tag "authentifyd/#{l}.png", width: '15'
+      
       = Authentifyd.top_navbar_snippet.try(:call).try(:html_safe)
