@@ -1,3 +1,3 @@
 module Authentifyd
-  VERSION = "1.1.7"
+  VERSION = "0.0.5"
 end
