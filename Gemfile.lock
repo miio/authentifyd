@@ -1,7 +1,14 @@
+GIT
+  remote: git://github.com/NicoArbogast/rails-translate-routes.git
+  revision: 9e18e63f5b3849961d89540da67272aa8299bcee
+  specs:
+    rails-translate-routes (0.1.3)
+      activesupport (>= 3.1)
+
 PATH
   remote: .
   specs:
-    authentifyd (1.1.7)
+    authentifyd (0.0.5)
       devise (= 2.1.2)
       devise-encryptable (= 0.1.2)
       haml-rails
@@ -127,8 +134,6 @@ GEM
       activesupport (= 3.2.14)
       bundler (~> 1.0)
       railties (= 3.2.14)
-    rails-translate-routes (0.1.3)
-      activesupport (>= 3.1)
     railties (3.2.14)
       actionpack (= 3.2.14)
       activesupport (= 3.2.14)
@@ -171,4 +176,5 @@ DEPENDENCIES
   authentifyd!
   jquery-rails
   mysql2
+  rails-translate-routes!
   rspec-rails

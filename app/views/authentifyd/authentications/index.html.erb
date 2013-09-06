@@ -7,8 +7,10 @@
     <%= t("You_have_not_linked_any_account_yet") %>
   <% end %>
 
-  </br>
-  </br>
-  <legend><%= t("Link_other_accounts") %></legend>
-  <%= render :partial => "authentifyd/sessions/social_networks" %>
+  <% if @authentications < 3 %>
+    </br>
+    </br>
+    <legend><%= t("Link_other_accounts") %></legend>
+    <%= render :partial => "authentifyd/sessions/social_networks" %>
+  <% end %>
 <% end %>
