@@ -6,7 +6,7 @@ class Authentifyd::User < ActiveRecord::Base
   devise  :database_authenticatable
   devise  :registerable,
           :recoverable, :rememberable, :trackable, :validatable,
-          :confirmable, :lockable, :token_authenticatable, :timeoutable
+          :confirmable, :lockable, :timeoutable
 
   def apply_omniauth(omniauth)
     authentications.build(:provider => omniauth['provider'], :uid => omniauth['uid'])
