@@ -10,8 +10,8 @@ Authentifyd::Engine.routes.draw do
                   }
   }
 
-  match "authentications/:user_id/link", :controller => 'authentications', :action => "link", :as => :link_accounts
-  match "authentications/:user_id/add", :controller => 'authentications', :action => "add", :as => :add_account
+  get "authentications/:user_id/link", :controller => 'authentications', :action => "link", :as => :link_accounts
+  get "authentications/:user_id/add", :controller => 'authentications', :action => "add", :as => :add_account
   
   get "authentications", :controller => 'authentications', :action => "index", :as => :accounts
   delete "authentications/:id", controller: 'authentications', action: "destroy", as: :destroy_account
@@ -25,6 +25,6 @@ end
 Localyzed.localyze_routes('config/locales/authentifyd/routes.yml', { :prefix_on_default_locale => true, :custom_route_set => Authentifyd::Engine.routes, :keep_untranslated_routes => true }) #, :uniq_translated_root => true})
 
 Authentifyd::Engine.routes.draw do
-  match "auth/:provider/callback", :controller => 'authentications', :action => "create"
-  match "auth/failure", :controller => 'authentications', :action => "failure"
+  get "auth/:provider/callback", :controller => 'authentications', :action => "create"
+  get "auth/failure", :controller => 'authentications', :action => "failure"
 end
