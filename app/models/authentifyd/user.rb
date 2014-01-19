@@ -12,8 +12,6 @@ class Authentifyd::User < ActiveRecord::Base
     authentications.build(:provider => omniauth['provider'], :uid => omniauth['uid'])
   end
 
-  # Setup accessible (or protected) attributes for your model
-  attr_accessible :email, :password, :password_confirmation, :remember_me, :language
 
   ##
   # :method: before_create__:ensure_password_exists
